@@ -8,7 +8,7 @@
 </head>
 <body>
 	<img class="logo" src="public/assets/logo.png" alt="">
-	<nav>
+	<nav id="navigation">
 		<ul>
 			<li><a href="#overons">Over ons</a></li>
 			<li><a href="#activiteiten">Activiteiten</a></li>
@@ -18,33 +18,69 @@
 		</ul>
 	</nav>
 	<header>
-		<h1>Vlaamse <br><span>Tinvereniging</span></br></h1>
-		<img src="public/assets/kan.png" alt="">
+		<div class="wrapper">
+			<h1>Vlaamse <br><span>Tinvereniging</span></br></h1>
+			<img src="public/assets/kan.png" alt="">
+		</div>
 	</header>
 	<section class="about">
+		<div class="wrapper">
 			<div class="content">
-			<h2>Over Ons</h2>
-			<p>De Vlaamse Tinvereniging bestaat uit een hondertal leden met een passie voor tin. In onze zoektocht naar oude stukken doen we soms verrassende ontdekkingen over tinnegieters, datering of oorsprong van een werk. Al onze bevindingen en expertise delen we graag via ons tijdschrift Tinnewerck en onze ledenactiviteiten.</p>
+				<h2>Over Ons</h2>
+				<p>De Vlaamse Tinvereniging bestaat uit een hondertal leden met een passie voor tin. In onze zoektocht naar oude stukken doen we soms verrassende ontdekkingen over tinnegieters, datering of oorsprong van een werk. Al onze bevindingen en expertise delen we graag via ons tijdschrift Tinnewerck en onze ledenactiviteiten.</p>
 			</div>
-	</section>
-	<section class="activities">
-		<div class="content">
-			<h2>Activiteiten</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, eum placeat fugit delectus, perferendis obcaecati sint maxime inventore quo quis mollitia dolorum quasi ullam quibusdam. Recusandae excepturi blanditiis totam quaerat.</p>
 		</div>
 	</section>
-	<section class="magazine">
+	<section class="activities">
+		<div class="wrapper">
 			<div class="content">
-			<h2>Publicaties</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, eum placeat fugit delectus, perferendis obcaecati sint maxime inventore quo quis mollitia dolorum quasi ullam quibusdam. Recusandae excepturi blanditiis totam quaerat.</p>
+				<h2>Activiteiten</h2>
+				<p>Jaarlijks organiseren we twee ledenbijeenkomsten en een museumbezoek gericht op antiek en oude tinnen voorwerpen. Op de ledenbijeenkomsten geven specialisten voordrachten over oud tin, de tinnegieters en hun merken. Leden kunnen er tevens hun tinnen stukken laten keuren of identificeren. Wil je zelf graag een voordracht geven, aarzel dan niet om ons te contacteren.</p>
+				<button class='button'>Agenda 2017</button>
 			</div>
+			<div id="content-side" class="content content-side">
+				<h2>Agenda 2017</h2>
+				<p>De voorjaarsvergadering gaat door op zondag 26 maart 2017.</p>
+				<p>De voorjaarsvergadering gaat door op zondag 26 maart 2017.</p>
+				<p>De voorjaarsvergadering gaat door op zondag 26 maart 2017.</p>
+			</div>
+		</div>
+	</section>
+	<section class="publicaties">
+		<div class="wrapper">
+			<div class="content">
+				<div class="content__left">
+					<h2>Publicaties</h2>
+					<p>Twee maal per jaar geeft de Vlaamse Tinvereniging een ledenblad uit, Tinnewerck. Elk nummer telt een zestigtal bladzijden waarin allerhande artikels over tin en aanverwante worden gepubliceerd.</p>
+					<button class='button'>Tinnewerck</button>
+				</div>
+				<div class="test content__right"><img src="public/assets/magazine.jpg" alt=""></div>
+			</div>
+		</div>
 	</section>
 	<section class="contact">
-		<div class="content">
+		<div class="wrapper">
 			<h2>Contact</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+			<div class="content">
+				<div class="content__left">
+					<p>Lid worden? Stuur een mailtje met je gegevens en we nemen zo snel mogelijk contact op.</p>
+					<p>Het lidgeld bedraagt €40. Hierin zijn inbegrepen de deelname aan de bijeenkomsten, de museumbezoeken en twee nummers van Tinnewerck.</p>
+				</div>
+				<div class="content__right">
+					<form action="">
+						<div class="container">
+							<input type="text" placeholder="Naam" required>
+							<input type="email" placeholder="Email" required>
+						</div>
+						<textarea name="message" rows="5"></textarea>
+						<input class="button" type="submit" value="Verzenden">
+					</form>
+				</div>	
+			</div>
 		</div>
 	</section>		
 	<footer>&copy;2017</footer>
+
+	<script src="dev/scripts/main.js"></script>
 </body>
 </html>

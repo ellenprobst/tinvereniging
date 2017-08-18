@@ -6,7 +6,7 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 body {
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 1.8;
 	letter-spacing: 1.8px;
 	color: #222;
@@ -16,14 +16,23 @@ body {
 //animation loop
 @keyframes slideDown {
 	0% {
-		transform: translateY(-100px);
+		transform: translateY(-150px);
 	}
 	100% {
 		transform: translateY(0);
 	}
 }
 
-@mixin animation {
+@keyframes slideUp {
+	0% {
+		transform: translateY(0px);
+	}
+	100% {
+		transform: translateY(-100px);
+	}
+}
+
+@mixin animationIn {
   @for $i from 1 through 5 {
     &:nth-child(#{$i}) {
       animation: slideDown .6s both ease;
@@ -32,7 +41,22 @@ body {
   }
 }
 
+@mixin animationOut {
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      animation: slideUp .4s both ease;
+      animation-delay: #{$i * .15}s;
+    }
+  }
+}
 
+.slide {
+
+	li {
+		@include animationOut;
+	}
+
+}
 
 
 
@@ -52,18 +76,44 @@ nav {
 	left: 50%;
 	transform: translateX(-50%);
 	li {
-		@include animation;
+		@include animationIn;
+	}
+	a {
+		position: relative;
+		&:hover:after{
+			opacity: 1;
+			-webkit-transform: scaleX(1);
+			-ms-transform: scaleX(1);
+			transform: scaleX(1);
+		}
+
+	}
+	a:after {
+		content: '';
+	    position: absolute;
+	    width: calc(100% - 30px);
+	    height: 2px;
+	    top: 35px;
+	    left: 15px;
+	    background-color: #fff;
+	    opacity: 0;
+	    -webkit-transform: scaleX(0);
+	    -ms-transform: scaleX(0);
+	    transform: scaleX(0);
+	    transition: all 0.3s ease-in-out 0s;
 	}
 }
 
+
+
 .nav__link--white {
-	border: 1px solid #192725;
+	border: 2px solid #192725;
 	border-radius: 100px;
 	transition: all .3s ease;
 	&:hover {
 		background: white;
 		color: #475856;
-		border: 1px solid #fff;
+		border: 2px solid #fff;
 		
 	}
 }
@@ -86,22 +136,27 @@ nav ul{
 	left: 50px;
 }
 
+.wrapper {
+	max-width: 1280px;
+	margin: 0 auto;
+}
 
 // header
 
 header {
 	background: #1b1b21;
 	background: #959684;
-	background: #52635a;
+	background: #525d56;
 	height: 85vh;
 	padding: 20px;
-	display: flex;
-	align-items: center;
+	.wrapper {
+		display: flex;
+		align-items: center;
+	}
 	img {
 		max-height: 85vh;
 		position: relative;
-		top: 120px;
-		right: -15vw;
+		top: 12vh;
 	}	
 }
 
@@ -127,11 +182,20 @@ h1 {
 	margin: 0 auto;
 }
 
-.magazine {
+.publicaties {
 	.content {
-		width: 60%;
-		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-left: 50px;
 	}
+}
+
+
+img {
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
 }
 
 h2 {
@@ -141,31 +205,97 @@ h2 {
 	font-weight: normal;
 }
 
-.contact, footer {
-	background: #52635a;
+.contact {
+	background: #525d56;
 }
 
 footer {
+	background: #222;
+	color: #525d56;
 	text-align: center;
 }
 
 .activities {
 	background: url(../assets/museum.jpg);
 	background-size: cover;
+	background-attachment: fixed;
 	display: flex;
 	.content {
 		width: 60%;
 		margin: 0 auto;
 		background: #fff;
 		padding: 50px;
+		transition: all 2s ease;
+		background:  linear-gradient(to top rgba(255,255,255, .9),rgba(255,255,255, .9) );
+		background-size: cover;
 	}
 }
 
 section {
-	padding: 80px 0;
-	min-height: 100vh;
+	padding: 60px 40px;
 }
 
 .contact {
 	min-height: 30vh;
+	padding: 20px 40px;
+	.content {
+		display: flex;
+		justify-content: space-around;
+	}
+}
+
+.content__left {
+	padding-right: 50px;
+}
+
+.content__left, .content__right {
+	width: 50%;
+}
+
+
+
+.content-side {
+	display: none;
+	transform: translateX(100vw);
+	transition: all 2s ease;
+}
+
+form {
+
+	input {
+		width: 49%;
+		padding: 10px;
+		background: none;
+		color: #fff;
+		border: none;
+		border-bottom: 1px solid #222;
+	}
+	textarea {
+		background: none;
+		width: 100%;
+		margin-top: 20px;
+		border: 1px solid #222;
+		color: #222;
+	}
+
+	::-webkit-input-placeholder {
+		color: #222;
+	}
+}
+
+.button, input.button {
+	background: #fff;
+	color: #475856;
+	border: 2px solid #475856;
+	transition: all .3s ease;
+	border-radius: 100px;	
+	padding: 10px 20px;
+	display: block;
+	width: 180px;
+	margin: 35px auto;
+	&:hover {
+		cursor: pointer;
+		background: #475856;
+		color: #fff;
+		box-shadow: 0 22px 55px 0 rgba(0, 0, 0, 0.25), 0 12px 17px 0 rgba(0, 0, 0, 0.15)}
 }
